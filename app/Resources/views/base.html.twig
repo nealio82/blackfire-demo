@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>{% block title %}Home{% endblock %} :: {{ 'Kitty Online' }}</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/theme.min.css"/>
+    {% block stylesheets %}{% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+</head>
+<body>
+{% block page_content %}{% endblock %}
+
+<footer>
+    <div class="container">
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>Made with <span aria-hidden="true" class="glyphicon glyphicon-heart"></span> by <a href="http://www.twitter.com/nealio82">@nealio82</a> and <a href="http://www.twitter.com/lunasciencecat">@LunaScienceCat</a></p>
+    </div>
+</footer>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+{% block javascripts %}{% endblock %}
+</body>
+</html>

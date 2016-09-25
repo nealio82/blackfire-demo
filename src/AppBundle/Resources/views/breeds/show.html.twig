@@ -1,0 +1,37 @@
+{% extends "::layout.html.twig" %}
+
+    {% block body %}
+
+        <div class="jumbotron">
+            <div class="container">
+
+                <div class="row">
+
+
+                    <div class="col-lg-3">
+                        <img class="img-thumbnail"
+                             src="https://pbs.twimg.com/profile_images/672404074474573824/sJyMOznQ.jpg"
+                             style="height: 270px;"/>
+                    </div>
+
+                    <div class="bs-callout bs-callout-info col-lg-9">
+                        <h1>Kitty Online</h1>
+                        <p>The internet's #1 resource for stats about cats</p>
+
+                        <p><a role="button" href="#about-kitty-online" class="btn btn-primary btn-lg">Learn more »</a>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="container marketing">
+
+            <h1>{{ breed.name }}</h1>
+
+            <p>{{ breed.characteristics }}</p>
+
+        </div>
+
+    {% endblock %}

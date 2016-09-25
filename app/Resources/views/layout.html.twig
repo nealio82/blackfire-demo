@@ -1,0 +1,42 @@
+{% extends "::base.html.twig" %}
+
+{% block page_content %}
+
+    {#<header role="banner" id="top" class="navbar navbar-static-top">#}
+    {#<div class="container">#}
+    {#<div class="navbar-header">#}
+    {#<button aria-expanded="false" aria-controls="bs-navbar" data-target="#bs-navbar" data-toggle="collapse"#}
+    {#type="button" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span>#}
+    {#<span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>#}
+    {#</button>#}
+    {#</div>#}
+
+
+    <nav class="collapse navbar-collapse" id="bs-navbar">
+
+        <div class="container">
+
+            <a class="navbar-brand" href="{{ path('homepage') }}">Kitty Online</a>
+            <ul class="nav navbar-nav">
+                <li><a href="#">Blackfire Tutorial</a></li>
+                <li><a href="{{ path('kitty-list') }}">Cats</a></li>
+                <li><a href="{{ path('breed-list') }}">Breeds</a></li>
+                <li><a href="{{ path('admin-home') }}">Admin</a></li>
+
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                    <li><a href="{{ path('fos_user_security_logout') }}">
+                            Log Out
+                        </a></li>
+                {% endif %}
+
+            </ul>
+        </div>
+    </nav>
+    {#</div>#}
+    {#</header>#}
+
+    {% block body %}
+
+    {% endblock %}
+
+{% endblock %}
