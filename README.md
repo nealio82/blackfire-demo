@@ -14,10 +14,13 @@ Why not? Everyone loves kittens. If you don't like kittens you're probably dead 
 How do I get started?
 ---
 
-It's easy as 1, 2, 3 (well actually it's, 1, 2, 3, 4)
+It's easy as 1, 2, 3 (well actually it's, 1, 2, 3, 4...)
 
 1. Clone the repo
-1. Do composer install
+1. Create an empty DB
+1. Do composer install (will fail)
+1. Do doctrine:schema:update --force
+1. Do composer install (wont fail, weeee)
 1. Do doctrine:fixtures:load
 1. Go to the app in your browser
 
