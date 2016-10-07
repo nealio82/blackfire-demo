@@ -1,68 +1,40 @@
-Symfony Standard Edition
+Kitty Online
 ========================
 
-Welcome to the Symfony Standard Edition - a fully-functional Symfony
-application that you can use as the skeleton for your new applications.
+The furriest Blackfire.io tutorial on the internet 
+---
 
-For details on how to download and get started with Symfony, see the
-[Installation][1] chapter of the Symfony Documentation.
+Welcome to Kitty Online. This repository is a demo application to showcase the simple gains you can make to your application performance with a tool like Blackfire.io. A live version (with fixes) is at http://www.kittyonline.net
 
-What's inside?
---------------
+Why 'Kitty Online'?
+---
 
-The Symfony Standard Edition is configured with the following defaults:
+Why not? Everyone loves kittens. If you don't like kittens you're probably dead inside.
 
-  * An AppBundle you can use to start coding;
+How do I get started?
+---
 
-  * Twig as the only configured template engine;
+It's easy as 1, 2, 3 (well actually it's, 1, 2, 3, 4)
 
-  * Doctrine ORM/DBAL;
+1. Clone the repo
+1. Do composer install
+1. Do doctrine:fixtures:load
+1. Go to the app in your browser
 
-  * Swiftmailer;
+(Yes, I've assumed familiarity with setting up Symfony projects and a web server here. Better instructions will come later.)
 
-  * Annotations enabled for everything.
+Go to the 'Blackfire tutorial' tab in the menu and start profiling!
 
-It comes pre-configured with the following bundles:
+FAQs
+---
 
-  * **FrameworkBundle** - The core Symfony framework bundle
-
-  * [**SensioFrameworkExtraBundle**][6] - Adds several enhancements, including
-    template and routing annotation capability
-
-  * [**DoctrineBundle**][7] - Adds support for the Doctrine ORM
-
-  * [**TwigBundle**][8] - Adds support for the Twig templating engine
-
-  * [**SecurityBundle**][9] - Adds security by integrating Symfony's security
-    component
-
-  * [**SwiftmailerBundle**][10] - Adds support for Swiftmailer, a library for
-    sending emails
-
-  * [**MonologBundle**][11] - Adds support for Monolog, a logging library
-
-  * **WebProfilerBundle** (in dev/test env) - Adds profiling functionality and
-    the web debug toolbar
-
-  * **SensioDistributionBundle** (in dev/test env) - Adds functionality for
-    configuring and working with Symfony distributions
-
-  * [**SensioGeneratorBundle**][13] (in dev/test env) - Adds code generation
-    capabilities
-
-  * **DebugBundle** (in dev/test env) - Adds Debug and VarDumper component
-    integration
-
-All libraries and bundles included in the Symfony Standard Edition are
-released under the MIT or BSD license.
-
-Enjoy!
-
-[1]:  https://symfony.com/doc/2.8/book/installation.html
-[6]:  https://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/index.html
-[7]:  https://symfony.com/doc/2.8/book/doctrine.html
-[8]:  https://symfony.com/doc/2.8/book/templating.html
-[9]:  https://symfony.com/doc/2.8/book/security.html
-[10]: https://symfony.com/doc/2.8/cookbook/email.html
-[11]: https://symfony.com/doc/2.8/cookbook/logging/monolog.html
-[13]: https://symfony.com/doc/2.8/bundles/SensioGeneratorBundle/index.html
+* Why put this together?
+  * I like Blackfire.io as a tool, and I like showing it to people. It makes me feel warm and fuzzy when they come back later on & show me what they've done with it
+* Do Blackfire.io pay you for this?
+  * Nope. I just like the tool
+* How much does Blackfire.io cost?
+  * I don't work for Blackfire.io. I am not paid to sell it, nor to keep this page updated with pricing information. The best place to go to for 'official' information is at http://blackfire.io.
+* Whose cat is on the homepage?
+  * This is my cat, Luna. She is a Siberian cat.
+* Where can I find out more about Luna?
+  * You can follow her on Twitter: http://twitter.com/LunaScienceCat
