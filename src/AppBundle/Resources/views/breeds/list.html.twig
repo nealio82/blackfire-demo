@@ -28,6 +28,8 @@
 
         <div class="container marketing">
 
+            <h2>{{ stats_breeds_count() }} Breeds</h2>
+
             <table class="table table-bordered table-striped">
 
                 <thead>
@@ -35,7 +37,7 @@
                     <th>#</th>
                     <th>Breed Name</th>
                     <th>Number of kitties</th>
-                    {#<th>Characteristics</th>#}
+                    <th>Characteristics</th>
                 </tr>
                 </thead>
 
@@ -46,8 +48,8 @@
                     <tr>
                         <td>{{ breed.id }}</td>
                         <td><a href="{{ path('breed-show', { slug: breed.slug }) }}">{{ breed.name }}</a></td>
-                        <td>54</td>
-                        {#<td>{{ breed.characteristics }}</td>#}
+                        <td>{{ breed.count }}</td>
+                        <td>{{ breed.characteristics }}</td>
                     </tr>
 
                 {% endfor %}

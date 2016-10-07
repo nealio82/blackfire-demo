@@ -32,7 +32,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  * @author Ryan Weaver <weaverryan@gmail.com>
  * @author Javier Eguiluz <javier.eguiluz@gmail.com>
  */
-class LoadFixtures extends AbstractFixture implements OrderedFixtureInterface, FixtureInterface, ContainerAwareInterface
+class LoadBreeds extends AbstractFixture implements OrderedFixtureInterface, FixtureInterface, ContainerAwareInterface
 {
     /** @var ContainerInterface */
     private $container;
@@ -136,51 +136,18 @@ class LoadFixtures extends AbstractFixture implements OrderedFixtureInterface, F
         'Ukrainian Levkoy',
     ];
 
-    const NAMES = [
-        'Luna', 'Bushy', 'Izzy', 'Cleo', 'Jess', 'Kitty', 'Herbie', 'Bella', 'Lucy', 'Tiger', 'Leo', 'Sophie',
-        'Charlie', 'Smokey', 'Max', 'Oliver', 'Cheeky', 'Serge', 'Kathia', 'Alvin', 'Freddie', 'Juan', 'Angel'
-    ];
 
     public function load(ObjectManager $manager)
     {
-        $this->loadFOSUsers($manager);
         $this->loadBreeds($manager);
-        $this->loadKitties($manager);
 
     }
 
     public function getOrder()
     {
-        return 1;
+        return 2;
     }
 
-    private function loadFOSUsers(ObjectManager $manager)
-    {
-
-        $userManager = $this->container->get('fos_user.user_manager');
-
-        $admin = $userManager->createUser();
-        $admin->setUsername('admin');
-        $admin->setPlainPassword('admin');
-        $admin->setEmail('admin@kittyonline.net');
-        $admin->setEnabled(true);
-        $admin->setRoles(array('ROLE_ADMIN'));
-
-        $user = $userManager->createUser();
-        $user->setUsername('user');
-        $user->setPlainPassword('user');
-        $user->setEmail('user@kittyonline.net');
-        $user->setEnabled(true);
-        $user->setRoles(array('ROLE_USER'));
-
-        // Update the users
-        $userManager->updateUser($user, true);
-        $userManager->updateUser($admin, true);
-
-        $this->addReference('user-0', $user);
-        $this->addReference('user-1', $admin);
-
-    }
 
     private function loadBreeds(ObjectManager $manager)
     {
@@ -200,30 +167,6 @@ class LoadFixtures extends AbstractFixture implements OrderedFixtureInterface, F
         $manager->flush();
 
     }
-
-    private function loadKitties(ObjectManager $manager)
-    {
-
-        $max_breeds = max(array_keys(SELF::BREEDS));
-        $max_names = max(array_keys(SELF::NAMES));
-
-        for ($i = 0; $i < 2000; $i++) {
-
-            $newKitty = new Kitty();
-            $newKitty->setName(ucfirst(SELF::NAMES[rand(0, $max_names)]));
-            $newKitty->setBio($this->getPostContent());
-            $newKitty->setBreed($this->getReference('breed-' . rand(0, $max_breeds)));
-            $newKitty->setBirthday(new \DateTime('now - ' . $i . 'days'));
-            $newKitty->setOwner($this->getReference('user-' . rand(0, 1)));
-
-            $manager->persist($newKitty);
-
-        }
-
-        $manager->flush();
-
-    }
-
 
     public function setContainer(ContainerInterface $container = null)
     {
@@ -246,46 +189,5 @@ nunc. Aenean mattis sollicitudin mattis. Nullam pulvinar vestibulum bibendum.
 MARKDOWN;
     }
 
-    private function getPhrases()
-    {
-        return array(
-            'Lorem ipsum dolor sit amet consectetur adipiscing elit',
-            'Pellentesque vitae velit ex',
-            'Mauris dapibus risus quis suscipit vulputate',
-            'Eros diam egestas libero eu vulputate risus',
-            'In hac habitasse platea dictumst',
-            'Morbi tempus commodo mattis',
-            'Ut suscipit posuere justo at vulputate',
-            'Ut eleifend mauris et risus ultrices egestas',
-            'Aliquam sodales odio id eleifend tristique',
-            'Urna nisl sollicitudin id varius orci quam id turpis',
-            'Nulla porta lobortis ligula vel egestas',
-            'Curabitur aliquam euismod dolor non ornare',
-            'Sed varius a risus eget aliquam',
-            'Nunc viverra elit ac laoreet suscipit',
-            'Pellentesque et sapien pulvinar consectetur',
-        );
-    }
 
-    private function getRandomPostTitle()
-    {
-        $titles = $this->getPhrases();
-        return $titles[array_rand($titles)];
-    }
-
-    private function getRandomPostSummary()
-    {
-        $phrases = $this->getPhrases();
-        $numPhrases = rand(6, 12);
-        shuffle($phrases);
-        return implode(' ', array_slice($phrases, 0, $numPhrases - 1));
-    }
-
-    private function getRandomCommentContent()
-    {
-        $phrases = $this->getPhrases();
-        $numPhrases = rand(2, 15);
-        shuffle($phrases);
-        return implode(' ', array_slice($phrases, 0, $numPhrases - 1));
-    }
 }

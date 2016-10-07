@@ -42,6 +42,8 @@ class Breed
      */
     protected $slug;
 
+    protected $count;
+
     /**
      * @param mixed $id
      */
@@ -130,6 +132,22 @@ class Breed
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    /**
+     * @param mixed $count
+     */
+    public function setCount($count)
+    {
+        $this->count = $count;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCount()
+    {
+        return $this->count;
     }
 
 }
