@@ -27,6 +27,12 @@ class Breed
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\Length(min = "10", minMessage = "breed.missing_introduction")
+     */
+    private $introduction;
+
+    /**
+     * @ORM\Column(type="text")
      * @Assert\Length(min = "10", minMessage = "breed.missing_characteristics")
      */
     private $characteristics;
@@ -90,6 +96,22 @@ class Breed
     public function getCharacteristics()
     {
         return $this->characteristics;
+    }
+
+    /**
+     * @param mixed $introduction
+     */
+    public function setIntroduction($introduction)
+    {
+        $this->introduction = $introduction;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIntroduction()
+    {
+        return $this->introduction;
     }
 
     /**
