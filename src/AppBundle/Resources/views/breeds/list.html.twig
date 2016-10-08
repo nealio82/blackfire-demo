@@ -16,10 +16,9 @@
 
                     <div class="bs-callout bs-callout-info col-lg-9">
                         <h1>Kitty Online</h1>
-                        <p>The internet's #1 resource for stats about cats</p>
+                        <p>The internet's #1 resource for stats about cats*</p>
 
-                        <p><a role="button" href="#about-kitty-online" class="btn btn-primary btn-lg">Learn more »</a>
-                        </p>
+                        <p><small>* Except, maybe, for Wikipedia, which is where these stats were stolen from</small></p>
                     </div>
                 </div>
 
@@ -37,7 +36,7 @@
                     <th>#</th>
                     <th>Breed Name</th>
                     <th>Number of kitties</th>
-                    <th>Characteristics</th>
+                    <th>Introduction</th>
                 </tr>
                 </thead>
 
@@ -49,7 +48,7 @@
                         <td>{{ breed.id }}</td>
                         <td><a href="{{ path('breed-show', { slug: breed.slug }) }}">{{ breed.name }}</a></td>
                         <td>{{ breed.count }}</td>
-                        <td>{{ breed.characteristics }}</td>
+                        <td>{{ breed.introduction | nl2br }}</td>
                     </tr>
 
                 {% endfor %}
