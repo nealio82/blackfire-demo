@@ -1,7 +1,6 @@
 <?php
 
 namespace AppBundle\Service;
-use Doctrine\Common\Cache\Cache;
 
 /**
  * Created by PhpStorm.
@@ -16,7 +15,7 @@ class KittyImageFetcher
     private $apiRequest;
     private $cache;
 
-    public function __construct($apiKey, $searchKey, $apiQuery, $apiRequest, Cache $cache)
+    public function __construct($apiKey, $searchKey, $apiQuery, $apiRequest)
     {
         $this->apiQuery = $apiQuery;
         $this->apiRequest = $apiRequest;
