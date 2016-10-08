@@ -7,13 +7,16 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
+use Carminato\GoogleCseBundle\Service\ApiRequest;
+use Carminato\GoogleCseBundle\Service\Query\ApiQuery;
+
 /**
  * @Route("/kitties")
  */
 class KittyController extends Controller
 {
     /**
-     * @Route("/{page}", name="kitty-list")
+     * @Route("/{page}", name="kitty-list", requirements={"page": "\d+"})
      */
     public function indexAction(Request $request, $page = 1)
     {
@@ -36,8 +39,27 @@ class KittyController extends Controller
      */
     public function kittyShowAction(Kitty $kitty)
     {
+
+        $apiQuery = new ApiQuery(
+            array(
+                'key' => $this->container->getParameter('google.api_key'),
+                'cx' => $this->container->getParameter('google.search_key'),
+                'q' => $kitty->getBreed()->getName() . ' cat',
+                'start' => 1,
+                'userIp' => $this->getRequest()->getClientIp(),
+                'searchType' => 'image'
+            )
+        );
+
+        $apiRequest = new ApiRequest($apiQuery);
+
+        $response = $apiRequest->getResponse();
+
+        $imageLink = $response->getResults()[0]->getLink();
+
         return $this->render('AppBundle:kitties:show.html.twig', [
-            'kitty' => $kitty
+            'kitty' => $kitty,
+            'imageLink' => $imageLink
         ]);
     }
 

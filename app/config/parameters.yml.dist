@@ -17,3 +17,6 @@ parameters:
 
     # A secret key that's used to generate certain security-related tokens
     secret:            ThisTokenIsNotSoSecretChangeIt
+
+    google.api_key: "Generate a Custom Search Engine API key at https://console.developers.google.com/apis"
+    google.search_key: "Create a Custom Search Engine at https://cse.google.com/cse/all then find 'Search engine ID' in the details page"
