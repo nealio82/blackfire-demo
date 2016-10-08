@@ -27,24 +27,16 @@ class KittyImageFetcher
     public function getImageForBreed($breedName)
     {
 
-        if (false === $data = $this->cache->fetch(md5($breedName))) {
+        $this->apiQuery->set('searchType', 'image');
+        $this->apiQuery->set('start', 1);
 
-            $this->apiQuery->set('searchType', 'image');
-            $this->apiQuery->set('start', 1);
+        $this->apiQuery->set('q', $breedName . ' cat');
 
-            $this->apiQuery->set('q', $breedName . ' cat');
+        $this->apiRequest->setQuery($this->apiQuery);
 
-            $this->apiRequest->setQuery($this->apiQuery);
+        $response = $this->apiRequest->getResponse();
 
-            $response = $this->apiRequest->getResponse();
-
-            $data = $response->getResults()[0]->getLink();
-
-            // store in cache for 15 minutes.
-            $this->cache->save(md5($breedName), $data, 900);
-        }
-
-        return $data;
+        return $response->getResults()[0]->getLink();
 
     }
 
