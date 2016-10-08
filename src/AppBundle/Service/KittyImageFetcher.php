@@ -13,7 +13,6 @@ class KittyImageFetcher
 
     private $apiQuery;
     private $apiRequest;
-    private $cache;
 
     public function __construct($apiKey, $searchKey, $apiQuery, $apiRequest)
     {
@@ -23,7 +22,6 @@ class KittyImageFetcher
         $this->apiQuery->set('key', $apiKey);
         $this->apiQuery->set('cx', $searchKey);
 
-        $this->cache = $cache;
     }
 
     public function getImageForBreed($breedName)
