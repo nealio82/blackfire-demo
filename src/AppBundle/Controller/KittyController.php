@@ -13,15 +13,21 @@ use Symfony\Component\HttpFoundation\Request;
 class KittyController extends Controller
 {
     /**
-     * @Route("/", name="kitty-list")
+     * @Route("/{page}", name="kitty-list")
      */
-    public function indexAction(Request $request)
+    public function indexAction(Request $request, $page = 1)
     {
 
-        $kitties = $this->getDoctrine()->getRepository(Kitty::class)->findAll();
+        $limit = 300;
+
+        $kitties = $this->getDoctrine()->getRepository(Kitty::class)->paginate($page, $limit);
+
+        $maxPages = ceil($kitties->count() / $limit);
 
         return $this->render('AppBundle:kitties:list.html.twig', [
-            'kitties' => $kitties
+            'kitties' => $kitties,
+            'maxPages' => $maxPages,
+            'thisPage' => $page
         ]);
     }
 
