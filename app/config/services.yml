@@ -14,3 +14,12 @@ services:
         arguments: ["@doctrine"]
         tags:
             - { name: twig.extension }
+
+    app.googlequery:
+        class: Carminato\GoogleCseBundle\Service\Query\ApiQuery
+    app.googlerequest:
+        class: Carminato\GoogleCseBundle\Service\ApiRequest
+
+    app.kittyimages:
+        class:     AppBundle\Service\KittyImageFetcher
+        arguments: [%google.api_key%, %google.search_key%, @app.googlequery, @app.googlerequest]
