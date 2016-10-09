@@ -1,0 +1,62 @@
+{% extends "::layout.html.twig" %}
+
+
+    {% block body %}
+
+        <div class="jumbotron">
+            <div class="container">
+
+                <div class="row">
+
+
+                    <div class="col-lg-3">
+                        <img class="img-thumbnail"
+                             src="https://pbs.twimg.com/profile_images/672404074474573824/sJyMOznQ.jpg"
+                             style="height: 270px;"/>
+                    </div>
+
+                    <div class="bs-callout bs-callout-info col-lg-9">
+                        <h1>Kitty Online</h1>
+                        <p>The internet's #1 resource for stats about cats*</p>
+
+                        <p>
+                            <small>* Except, maybe, for Wikipedia, which is where these stats were stolen from</small>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="container marketing">
+            <h1>Contact Us</h1>
+            <div class="row">
+
+                {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+                <div class="col-lg-6 col-lg-offset-3">
+                    <div class="bg-danger">
+                        <p>{{ form_errors(form.email) }}</p>
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form.email) }}
+                        {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+
+                    <div class="form-group">
+                        <div class="bg-danger">
+                            <p>{{ form_errors(form.message) }}</p>
+                        </div>
+                        {{ form_label(form.message) }}
+                        {{ form_widget(form.message, {'attr': {'class': 'form-control', 'rows' : 10}}) }}
+                    </div>
+
+                    {{ form_row(form.submit, {'attr': {'class': 'btn btn-default pull-right'}}) }}
+                </div>
+                {{ form_end(form) }}
+
+            </div>
+
+        </div>
+
+    {% endblock %}

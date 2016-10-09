@@ -8,6 +8,11 @@ use Doctrine\ORM\EntityRepository;
 class BreedRepository extends EntityRepository
 {
 
+    public function findAll()
+    {
+        return $this->findBy(array(), array('name' => 'ASC'));
+    }
+
     public function countKittiesBelongingToBreed($breed_name)
     {
 

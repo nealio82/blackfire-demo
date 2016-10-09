@@ -20,8 +20,13 @@ class BreedController extends Controller
 
         $breeds = $this->getDoctrine()->getRepository(Breed::class)->findAll();
 
-        foreach($breeds AS $breed) {
-            $breed->setCount($this->getDoctrine()->getRepository(Breed::class)->countKittiesBelongingToBreed($breed->getName()));
+        foreach ($breeds AS $breed) {
+
+            $breed->setCount(
+                $this->getDoctrine()->getRepository(Breed::class)
+                    ->countKittiesBelongingToBreed($breed->getName())
+            );
+
         }
 
         return $this->render('AppBundle:breeds:list.html.twig', [

@@ -37,10 +37,23 @@ class LoadKitties extends AbstractFixture implements OrderedFixtureInterface, Fi
     /** @var ContainerInterface */
     private $container;
 
-
     const NAMES = [
         'Luna', 'Bushy', 'Izzy', 'Cleo', 'Jess', 'Kitty', 'Herbie', 'Bella', 'Lucy', 'Tiger', 'Leo', 'Sophie',
-        'Charlie', 'Smokey', 'Max', 'Oliver', 'Cheeky', 'Serge', 'Kathia', 'Alvin', 'Freddie', 'Juan', 'Angel'
+        'Charlie', 'Smokey', 'Max', 'Oliver', 'Cheeky', 'Serge', 'Kathia', 'Alvin', 'Freddie', 'Juan', 'Angel',
+        'Purr Lancelot', 'Snowball', 'Snowball II', 'Snowball III', 'Snowball IV', 'Snowball V', 'Snarf', 'Frankie',
+        'Ossie', 'Pedro Sanchez', 'Mr Bigglesworth', 'Grumpy Cat', 'The cat from Spain', 'The cat from Greece',
+        'The cat from Norway', 'The cat from France', 'The cat from Brazil', 'The cat from Berlin', 'The cat from Japan',
+        'Spotty', 'Azrael', 'Cat Stevens', 'James', 'Kevin', 'Terry', 'Tim', 'Bruce', 'Eric', 'Bert', 'Howard', 'Trevor',
+        'Gertrude', 'Mick', 'Andrew', 'Bob', 'Mr Tinkles', 'Slinki Malinki', 'Scar Face Claw', 'Mog', 'Six Dinner Sid',
+        'Astrocat', 'Kuli the surfing cat from Honolulu', 'Tab', 'Monty', 'The Magical Mr. Mistoffelees',
+        'Professor Henry Higgins', 'Neighbour Cat', 'Nyan Cat', 'Tommy The Cat', 'Cole', 'Marmalade', 'Pilchard',
+        'Stripes', 'Puss In Boots', 'Puss', 'Mr Meowgi', 'Professor Catface', 'Felix', 'Garfield', 'Tom',
+        'Sylvester', 'Top Cat', 'Islay', 'Jura', 'Sammo', 'Gladstone', 'Palmerstone', 'Smelly Cat', 'Pussy Galore',
+        "Mrs Slocombe's Pussy", 'Bagheera', 'Simba', 'Nala', 'Tigger', 'Mittens', 'Chairman Meow', 'Fidel Catstro',
+        'The Great Catsby', 'Catzilla', 'Orion', 'Scratchy', 'Salem', 'Mrs Whiskerson', 'Grisabella', 'Pink Panther',
+        'Cheshire Cat', 'The cat in the hat', 'Cosmic Creepers', 'Benny', 'Cosmo', 'Jonesy', 'Catwoman', 'Catman',
+        'Sassy the cat', 'Mr Jinx', 'Crookshanks', 'Isis', 'Binx', 'Felix', 'Lucifer', 'Cat', 'Mufasa', 'Clarence',
+        'Shere Khan', 'Raj', 'Frankenstein', 'Figaro', 'Prince John'
     ];
 
     public function load(ObjectManager $manager)

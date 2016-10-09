@@ -23,3 +23,12 @@ services:
     app.kittyimages:
         class:     AppBundle\Service\KittyImageFetcher
         arguments: [%google.api_key%, %google.search_key%, @app.googlequery, @app.googlerequest]
+
+    app.spam_validator:
+        class:     AppBundle\Service\SpamValidator
+
+    validator.is_not_spam:
+        class: AppBundle\Validator\Constraints\IsNotSpamValidator
+        arguments: [@app.spam_validator]
+        tags:
+            - { name: validator.constraint_validator }
