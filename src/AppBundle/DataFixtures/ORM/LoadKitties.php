@@ -53,7 +53,8 @@ class LoadKitties extends AbstractFixture implements OrderedFixtureInterface, Fi
         'The Great Catsby', 'Catzilla', 'Orion', 'Scratchy', 'Salem', 'Mrs Whiskerson', 'Grisabella', 'Pink Panther',
         'Cheshire Cat', 'The cat in the hat', 'Cosmic Creepers', 'Benny', 'Cosmo', 'Jonesy', 'Catwoman', 'Catman',
         'Sassy the cat', 'Mr Jinx', 'Crookshanks', 'Isis', 'Binx', 'Felix', 'Lucifer', 'Cat', 'Mufasa', 'Clarence',
-        'Shere Khan', 'Raj', 'Frankenstein', 'Figaro', 'Prince John'
+        'Shere Khan', 'Raj', 'Frankenstein', 'Figaro', 'Prince John', 'Scat Cat', 'Cat Baloo', 'Ginger', 'Fluffy',
+        'Spinx', 'Hercules', 'Perseus', 'Fluff', 'Zoe'
     ];
 
     public function load(ObjectManager $manager)
