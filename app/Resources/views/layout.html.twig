@@ -12,7 +12,6 @@
                 <li><a href="{{ path('kitty-list') }}">Kitties</a></li>
                 <li><a href="{{ path('breed-list') }}">Breeds</a></li>
                 <li><a href="{{ path('contact') }}">Contact the Kitties</a></li>
-                <li><a href="{{ path('admin-home') }}">Admin</a></li>
 
                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                     <li><a href="{{ path('fos_user_security_logout') }}">
