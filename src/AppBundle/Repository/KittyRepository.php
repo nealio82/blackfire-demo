@@ -18,7 +18,8 @@ class KittyRepository extends EntityRepository
 
         $query = $this->createQueryBuilder('k')
             ->setFirstResult($limit * ($page - 1))
-            ->setMaxResults($limit);
+            ->setMaxResults($limit)
+            ->addOrderBy('k.birthday');
 
         $paginator = new Paginator($query);
 
