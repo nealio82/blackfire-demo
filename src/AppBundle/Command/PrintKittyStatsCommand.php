@@ -23,11 +23,15 @@ class PrintKittyStatsCommand extends ContainerAwareCommand
 
         foreach ($doctrine->getRepository(Kitty::class)->findAll() AS $kitty) {
 
-            $output->writeln($kitty->getName() . " the " . $kitty->getBreed()->getName() . " cat");
+            $catinfo = $kitty->getName() . " the " . $kitty->getBreed()->getName() . " cat";
+
+            $output->writeln($catinfo);
 
         }
 
-        $output->writeln(count($doctrine->getRepository(Kitty::class)->findAll()) . " kitties in the database");
+        $numkitties = count($doctrine->getRepository(Kitty::class)->findAll());
+
+        $output->writeln($numkitties . " kitties in the database");
 
     }
 
