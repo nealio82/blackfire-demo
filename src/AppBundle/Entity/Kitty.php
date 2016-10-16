@@ -10,7 +10,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity(repositoryClass="AppBundle\Repository\KittyRepository")
- *
+ * @ORM\Table(indexes={@ORM\Index(name="birthday_idx", columns={"birthday"})})
  */
 class Kitty
 {

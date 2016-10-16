@@ -21,7 +21,8 @@
         "friendsofsymfony/user-bundle": "~2.0@dev",
         "gedmo/doctrine-extensions": "^2.4",
         "williancarminato/google-cse-bundle": "@dev",
-        "liip/search-bundle": "^2.0"
+        "liip/search-bundle": "^2.0",
+        "blackfire/php-sdk": "^1.5"
     },
     "require-dev": {
         "sensio/generator-bundle": "~3.0",

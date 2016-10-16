@@ -13,22 +13,26 @@ class BreedRepository extends EntityRepository
         return $this->findBy(array(), array('name' => 'ASC'));
     }
 
+    public function countBreeds()
+    {
+        $query = $this->createQueryBuilder('b')
+            ->select('count(b.id) AS breedcount')
+            ->getQuery();
+
+        return $query->getSingleScalarResult();
+    }
+
     public function countKittiesBelongingToBreed($breed_name)
     {
 
-        $kitties = $this->getEntityManager()->getRepository(Kitty::class)->findAll();
+        $query = $this->createQueryBuilder('b')
+            ->select('count(k.id) AS kittycount')
+            ->innerJoin('b.kitties', 'k')
+            ->where('b.name = :breed')
+            ->setParameter('breed', $breed_name)
+            ->getQuery();
 
-        $tmp = [];
-
-        foreach ($kitties AS $kitty) {
-
-            if ($kitty->getBreed()->getName() == $breed_name) {
-                $tmp[] = $kitty;
-            }
-
-        }
-
-        return count($tmp);
+        return $query->getSingleScalarResult();
 
     }
 

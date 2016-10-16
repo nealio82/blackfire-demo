@@ -4,7 +4,7 @@ namespace AppBundle\Service;
 
 class SpamValidator
 {
-    const MAX_SCORE = 2;
+    const MAX_SCORE = 25;
 
     /**
      * @param string $contents
@@ -13,7 +13,7 @@ class SpamValidator
      */
     public function validate($contents)
     {
-        return $this->getContentsScore($contents) > self::MAX_SCORE;
+        return $this->getContentsScore($contents) < self::MAX_SCORE;
     }
 
     /**
@@ -23,24 +23,7 @@ class SpamValidator
      */
     private function getContentsScore($contents)
     {
-        $score = strlen($contents);
-        $score = $this->sanitizeScore($score);
-
-        return $score;
+       return str_word_count($contents) / log(strlen($contents));
     }
 
-    /**
-     * @param int $score
-     *
-     * @return int
-     */
-    private function sanitizeScore($score)
-    {
-        $final = 0;
-        for ($i = 0; $i < self::MAX_SCORE; ++$i) {
-            $final = $score == 0 ? 1 : $score * $this->sanitizeScore($score - 1);
-        }
-
-        return $final;
-    }
 }

@@ -7,15 +7,15 @@ use Doctrine\Bundle\DoctrineBundle\Registry;
 class StatsExtension extends \Twig_Extension
 {
     private $stats;
+    /**
+     * @var Registry
+     */
+    private $doctrine;
 
     public function __construct(Registry $doctrine)
     {
 
-        $this->stats = array(
-            'kitties' => count($doctrine->getRepository('AppBundle:Kitty')->findAll()),
-            'breeds' => count($doctrine->getRepository('AppBundle:Breed')->findAll()),
-        );
-
+        $this->doctrine = $doctrine;
     }
 
     public function getFunctions()
@@ -28,12 +28,12 @@ class StatsExtension extends \Twig_Extension
 
     public function getKittiesCountStats()
     {
-        return $this->stats['kitties'];
+        return $this->doctrine->getRepository('AppBundle:Kitty')->countKitties();
     }
 
     public function getBreedsCountStats()
     {
-        return $this->stats['breeds'];
+        return $this->doctrine->getRepository('AppBundle:Breed')->countBreeds();
     }
 
     public function getName()

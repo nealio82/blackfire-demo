@@ -2,6 +2,8 @@
 
 namespace AppBundle\Service;
 
+use Doctrine\Common\Cache\Cache;
+
 /**
  * Created by PhpStorm.
  * User: neal
@@ -13,8 +15,12 @@ class KittyImageFetcher
 
     private $apiQuery;
     private $apiRequest;
+    /**
+     * @var Cache
+     */
+    private $cache;
 
-    public function __construct($apiKey, $searchKey, $apiQuery, $apiRequest)
+    public function __construct($apiKey, $searchKey, $apiQuery, $apiRequest, Cache $cache)
     {
         $this->apiQuery = $apiQuery;
         $this->apiRequest = $apiRequest;
@@ -22,21 +28,27 @@ class KittyImageFetcher
         $this->apiQuery->set('key', $apiKey);
         $this->apiQuery->set('cx', $searchKey);
 
+        $this->cache = $cache;
     }
 
     public function getImageForBreed($breedName)
     {
 
-        $this->apiQuery->set('searchType', 'image');
-        $this->apiQuery->set('start', 1);
+        if (false === $data = $this->cache->fetch(md5($breedName))) {
 
-        $this->apiQuery->set('q', $breedName . ' cat');
+            $this->apiQuery->set('searchType', 'image');
+            $this->apiQuery->set('start', 1);
 
-        $this->apiRequest->setQuery($this->apiQuery);
+            $this->apiQuery->set('q', $breedName . ' cat');
 
-        $response = $this->apiRequest->getResponse();
+            $this->apiRequest->setQuery($this->apiQuery);
 
-        return $response->getResults()[0]->getLink();
+            $data = $this->apiRequest->getResponse();
+
+            $this->cache->save(md5($breedName), $data, 3600);
+        }
+
+        return $data->getResults()[0]->getLink();
 
     }
 

@@ -22,7 +22,7 @@ services:
 
     app.kittyimages:
         class:     AppBundle\Service\KittyImageFetcher
-        arguments: [%google.api_key%, %google.search_key%, @app.googlequery, @app.googlerequest]
+        arguments: [%google.api_key%, %google.search_key%, @app.googlequery, @app.googlerequest, @doctrine.orm.default_result_cache]
 
     app.spam_validator:
         class:     AppBundle\Service\SpamValidator
